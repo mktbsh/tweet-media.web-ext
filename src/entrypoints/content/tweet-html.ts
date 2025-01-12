@@ -10,13 +10,15 @@ interface TweetArticleNode {
   attach: VoidFunction;
 }
 
-export function initTweetArticleNode(root: Element): TweetArticleNode | undefined {
+const empty = { attach: noop };
+
+export function initTweetArticleNode(root: Element): TweetArticleNode {
   const attached = isAttached(root);
-  if (attached) return;
+  if (attached) return empty;
 
   const meta = getTweetMetadata(root);
   if (!meta) {
-    return
+    return empty
   }
 
   const photoElements = [...root.querySelectorAll<HTMLImageElement>(X_IMG_SELECTOR)];
@@ -29,7 +31,7 @@ export function initTweetArticleNode(root: Element): TweetArticleNode | undefine
 
 
   if (!hasMedia) {
-    return { attach: noop }
+    return empty
   }
 
   const attach = () => {
