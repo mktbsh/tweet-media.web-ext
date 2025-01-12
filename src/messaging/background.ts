@@ -7,7 +7,7 @@ export const downloadMediaHandler: MessageHandler<"downloadMedia"> = async (
 ) => {
   const { tweetId, username, mode } = msg.data;
 
-  const outDir = [DOWNLOAD_DIR, username, tweetId].join("/");
+  const outDir = `${DOWNLOAD_DIR}/${username}#${tweetId}`
 
   switch (mode) {
     case "all":
