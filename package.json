@@ -2,7 +2,7 @@
   "name": "save-tweet-media",
   "description": "Browser extension to download images and videos from tweets",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "license": "MIT",
   "scripts": {
